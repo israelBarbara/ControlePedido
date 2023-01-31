@@ -8,8 +8,8 @@ namespace ControlePedido.Domain.v1.DTOs.Response
 {
     public class ItensGroupedResponse
     {
-        public decimal TotalAmount { get; set; }
+        public decimal ValorTotal { get; set; }
         public string Nome { get; set; }    
-        public int Quantity { get; set; }
+        public int Quantidade { get; set; }
     }
 }

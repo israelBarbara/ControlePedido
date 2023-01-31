@@ -57,8 +57,8 @@ namespace ControlePedido.Domain.v1.Repositories
                     group IP by IP.Nome into K
                     select new ItensGroupedResponse
                     {
-                        Quantity = K.Count(),
-                        TotalAmount = K.Sum(x => x.ValorUnitario),
+                        Quantidade = K.Count(),
+                        ValorTotal = K.Sum(x => x.ValorUnitario),
                         Nome = K.Key
                     }).ToList();
 
