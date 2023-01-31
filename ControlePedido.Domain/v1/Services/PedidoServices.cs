@@ -35,9 +35,11 @@ namespace ControlePedido.Domain.v1.Services
         {
             if(pedido.ClienteId <= 0) return new APIMessage(HttpStatusCode.BadRequest, pedido,"Informe o cliente");
 
-            var itemPedido = new InsertItemPedidoRequest();
-            itemPedido.Nome = pedido.ItemNome;
-            itemPedido.ValorUnitario = pedido.ValorUnitario;
+            var itemPedido = new InsertItemPedidoRequest
+            {
+                Nome = pedido.ItemNome,
+                ValorUnitario = pedido.ValorUnitario
+            };
 
             int _pedidoId = _PedidoRepository.InsertPedido(pedido.ClienteId);
             itemPedido.PedidoId = _pedidoId;
