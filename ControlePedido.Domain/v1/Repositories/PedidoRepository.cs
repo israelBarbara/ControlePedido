@@ -20,7 +20,7 @@ namespace ControlePedido.Domain.v1.Repositories
         }
         public int InsertPedido(int idCliente)
         {
-            var _pedido = new Pedido
+            Pedido _pedido = new Pedido
             {
                 DataCriacao = DateTime.Now,
                 ClienteId = idCliente,
@@ -38,7 +38,7 @@ namespace ControlePedido.Domain.v1.Repositories
 
         public bool RemovePedido(int idPedido)
         {
-            var _pedido = _context.Pedido.Find(idPedido);
+            Pedido? _pedido = _context.Pedido.Find(idPedido);
             if(_pedido == null) return false;
             _context.Pedido.Remove(_pedido);
             _context.SaveChanges();

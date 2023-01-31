@@ -22,7 +22,7 @@ namespace ControlePedido.Domain.v1.Repositories
 
         public void InsertItemPedido(InsertItemPedidoRequest ItemPedido)
         {
-            var _itemPedido = new ItemPedido
+            ItemPedido _itemPedido = new ItemPedido
             {
                 Nome = ItemPedido.Nome,
                 ValorUnitario = ItemPedido.ValorUnitario,
@@ -36,7 +36,7 @@ namespace ControlePedido.Domain.v1.Repositories
 
         public int RemoveItemPedido(int itemPedidoId)
         {
-            var itemPedido = _context.ItemPedido.Find(itemPedidoId);
+            ItemPedido? itemPedido = _context.ItemPedido.Find(itemPedidoId);
             if (itemPedido == null) return 0;
           
             _context.ItemPedido.Remove(itemPedido);

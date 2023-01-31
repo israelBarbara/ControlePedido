@@ -2,6 +2,7 @@
 using ControlePedido.Domain.v1.DTOs.Request;
 using ControlePedido.Domain.v1.Interfaces.Repositories;
 using ControlePedido.Domain.v1.Interfaces.Services;
+using ControlePedido.Infrastructure.EntityModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace ControlePedido.Domain.v1.Services
         public APIMessage RemoveItemPedido(int idItemPedido)
         {        
             int pedidoId = _ItemPedidoRepository.RemoveItemPedido(idItemPedido);
-            var _items = _PedidoRepository.GetAllItemsFromPedido(pedidoId);
+            IEnumerable<ItemPedido> _items = _PedidoRepository.GetAllItemsFromPedido(pedidoId);
             if (_items.Count() == 0)
             {
                 _PedidoRepository.RemovePedido(pedidoId);

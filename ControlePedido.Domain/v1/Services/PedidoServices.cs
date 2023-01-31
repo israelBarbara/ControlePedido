@@ -1,5 +1,6 @@
 ﻿using Cinema.Domain.Utils;
 using ControlePedido.Domain.v1.DTOs.Request;
+using ControlePedido.Domain.v1.DTOs.Response;
 using ControlePedido.Domain.v1.Interfaces.Repositories;
 using ControlePedido.Domain.v1.Interfaces.Services;
 using ControlePedido.Domain.v1.Repositories;
@@ -27,7 +28,7 @@ namespace ControlePedido.Domain.v1.Services
 
         public APIMessage GetItensPedidoByPedido(int pedidoId)
         {
-            var _itens = _PedidoRepository.GetItemPedidosByPedidoId(pedidoId);
+            IEnumerable<ItensGroupedResponse> _itens = _PedidoRepository.GetItemPedidosByPedidoId(pedidoId);
             return new APIMessage(HttpStatusCode.OK, _itens);
         }
 
@@ -35,7 +36,7 @@ namespace ControlePedido.Domain.v1.Services
         {
             if(pedido.ClienteId <= 0) return new APIMessage(HttpStatusCode.BadRequest, pedido,"Informe o cliente");
 
-            var itemPedido = new InsertItemPedidoRequest
+            InsertItemPedidoRequest itemPedido = new InsertItemPedidoRequest
             {
                 Nome = pedido.ItemNome,
                 ValorUnitario = pedido.ValorUnitario
@@ -50,7 +51,7 @@ namespace ControlePedido.Domain.v1.Services
 
         public APIMessage GetAllOrders()
         {
-            var pedidos = _PedidoRepository.GetAllOrders();
+            IEnumerable<PedidoResponse> pedidos = _PedidoRepository.GetAllOrders();
             return new APIMessage(HttpStatusCode.OK, pedidos);
         }
     }

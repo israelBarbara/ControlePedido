@@ -1,5 +1,6 @@
 ﻿using Cinema.Domain.Utils;
 using ControlePedido.Domain.v1.DTOs.Request;
+using ControlePedido.Domain.v1.DTOs.Response;
 using ControlePedido.Domain.v1.Interfaces.Repositories;
 using ControlePedido.Domain.v1.Interfaces.Services;
 using System;
@@ -32,7 +33,7 @@ namespace ControlePedido.Domain.v1.Services
 
         public APIMessage GetClientes()
         {
-            var _clientes = _clienteRepository.FindAllClientes();
+            IEnumerable<ClientesResponse> _clientes = _clienteRepository.FindAllClientes();
             return new APIMessage(HttpStatusCode.OK, _clientes);
         }
 

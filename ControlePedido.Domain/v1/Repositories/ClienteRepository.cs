@@ -17,7 +17,7 @@ namespace ControlePedido.Domain.v1.Repositories
 
         public Cliente FindCliente(int id)
         {
-            var _cliente = _context.Cliente.Find(id);
+            Cliente? _cliente = _context.Cliente.Find(id);
             if (_cliente == null) return null;
             return _cliente;
         }
@@ -35,7 +35,7 @@ namespace ControlePedido.Domain.v1.Repositories
 
         public void InsertCliente(InsertClienteRequest cliente)
         {
-            var _cliente = new Cliente
+            Cliente _cliente = new Cliente
             {
                 Nome = cliente.Nome,
                 Email = cliente.Email
@@ -46,7 +46,7 @@ namespace ControlePedido.Domain.v1.Repositories
 
         public Cliente UpdateCliente(UpdateClienteRequest cliente)
         {
-            var _cliente = _context.Cliente.Find(cliente.Id);
+            Cliente? _cliente = _context.Cliente.Find(cliente.Id);
             if(_cliente == null) return null;
 
             _cliente.Nome = cliente.Nome;
@@ -57,7 +57,7 @@ namespace ControlePedido.Domain.v1.Repositories
 
         public bool RemoveCliente(int id)
         {
-            var _cliente = _context.Cliente.Find(id);
+            Cliente? _cliente = _context.Cliente.Find(id);
             if (_cliente == null) return false;
 
             _context.Remove(_cliente);
