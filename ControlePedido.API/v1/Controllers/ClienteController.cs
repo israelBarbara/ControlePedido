@@ -24,6 +24,13 @@ namespace ControlePedido.API.v1.Controllers
             return StatusCode((int)result.StatusCode, result.Content);
         }
 
+        [HttpGet("Clientes")]
+        public IActionResult GetClientes()
+        {
+            APIMessage result = _services.GetClientes();
+            return StatusCode((int)result.StatusCode, result.Content);
+        }
+
 
     }
 }

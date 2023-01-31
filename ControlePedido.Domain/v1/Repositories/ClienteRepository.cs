@@ -1,5 +1,6 @@
 ﻿
 using ControlePedido.Domain.v1.DTOs.Request;
+using ControlePedido.Domain.v1.DTOs.Response;
 using ControlePedido.Domain.v1.Interfaces.Repositories;
 using ControlePedido.Infrastructure;
 
@@ -21,9 +22,15 @@ namespace ControlePedido.Domain.v1.Repositories
             return _cliente;
         }
 
-        public IEnumerable<Cliente> FindAllClientes()
+        public IEnumerable<ClientesResponse> FindAllClientes()
         {
-            return _context.Cliente.ToList();  
+           return (from C in _context.Cliente
+             select new ClientesResponse
+             {
+                 Id = C.Id,
+                 Nome = C.Nome,
+                 Email = C.Email,   
+             }).ToList();
         }
 
         public void InsertCliente(InsertClienteRequest cliente)

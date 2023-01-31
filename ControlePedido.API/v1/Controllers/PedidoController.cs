@@ -16,7 +16,7 @@ namespace ControlePedido.API.v1.Controllers
             _services = services;
         }
 
-        [HttpGet("get")]
+        [HttpGet("grouped-itens/{id}")]
         public IActionResult GetItensPedido(int idPedido)
         {
             APIMessage result = _services.GetItensPedidoByPedido(idPedido);
@@ -29,6 +29,15 @@ namespace ControlePedido.API.v1.Controllers
             APIMessage result = _services.InsertNewPedido(pedido);
             return StatusCode((int)result.StatusCode, result.Content);
         }
+
+        [HttpPost("all-orders")]
+        public IActionResult AllOrders()
+        {
+            APIMessage result = _services.GetAllOrders();
+            return StatusCode((int)result.StatusCode, result.Content);
+        }
+
+       
 
     }
 }

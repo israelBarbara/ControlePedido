@@ -11,5 +11,6 @@ namespace ControlePedido.Domain.v1.Interfaces.Services
     public interface IClienteServices
     {
         public APIMessage InsertCliente(InsertClienteRequest cliente);
+        public APIMessage GetClientes();
     }
 }

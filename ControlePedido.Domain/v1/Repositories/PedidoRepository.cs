@@ -50,6 +50,18 @@ namespace ControlePedido.Domain.v1.Repositories
             return _context.ItemPedido.Where(x=>x.PedidoId == PedidoId).ToList();
         }
 
+        public IEnumerable<PedidoResponse> GetAllOrders()
+        {
+            return (from p in _context.Pedido
+                    join cli in _context.Cliente on p.ClienteId equals cli.Id
+                    select new PedidoResponse
+                    {
+                        Id = p.Id,
+                        DataCriacao = p.DataCriacao.ToString("dd/MM/yyyy hh:mm:ss"),
+                        nomeCliente = cli.Nome
+                    }).ToList();
+        }
+
         public IEnumerable<ItensGroupedResponse> GetItemPedidosByPedidoId(int pedidoId)
         {
 

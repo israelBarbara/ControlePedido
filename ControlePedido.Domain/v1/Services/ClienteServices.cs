@@ -30,5 +30,11 @@ namespace ControlePedido.Domain.v1.Services
             return new APIMessage(HttpStatusCode.OK, cliente);
         }
 
+        public APIMessage GetClientes()
+        {
+            var _clientes = _clienteRepository.FindAllClientes();
+            return new APIMessage(HttpStatusCode.OK, _clientes);
+        }
+
     }
 }

@@ -13,5 +13,7 @@ namespace ControlePedido.Domain.v1.Interfaces.Services
         public APIMessage GetItensPedidoByPedido(int pedidoId);
 
         public APIMessage InsertNewPedido(InsertPedidoRequest pedido);
+
+        public APIMessage GetAllOrders();
     }
 }

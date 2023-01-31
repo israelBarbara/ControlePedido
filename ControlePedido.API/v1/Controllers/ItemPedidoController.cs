@@ -22,10 +22,8 @@ namespace ControlePedido.API.v1.Controllers
             APIMessage result = _services.InsertItemPedido(pedido);
             return StatusCode((int)result.StatusCode, result.Content);
         }
-
-        
-
-        [HttpDelete("Remove")]
+      
+        [HttpDelete("Remove/{id}")]
         public IActionResult ItemPedido(int id)
         {
             APIMessage result = _services.RemoveItemPedido(id);

@@ -44,5 +44,12 @@ namespace ControlePedido.Domain.v1.Services
             _ItemPedidoRepository.InsertItemPedido(itemPedido);
             return new APIMessage(HttpStatusCode.OK, _pedidoId);
         }
+
+
+        public APIMessage GetAllOrders()
+        {
+            var pedidos = _PedidoRepository.GetAllOrders();
+            return new APIMessage(HttpStatusCode.OK, pedidos);
+        }
     }
 }

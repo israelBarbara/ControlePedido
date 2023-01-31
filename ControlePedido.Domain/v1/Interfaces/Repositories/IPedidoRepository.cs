@@ -14,5 +14,6 @@ namespace ControlePedido.Domain.v1.Interfaces.Repositories
         public bool RemovePedido(int idPedido);
         public IEnumerable<ItensGroupedResponse> GetItemPedidosByPedidoId(int pedidoId);
         public IEnumerable<ItemPedido> GetAllItemsFromPedido(int PedidoId);
+        public IEnumerable<PedidoResponse> GetAllOrders();
     }
 }
