@@ -29,7 +29,14 @@ namespace ControlePedido.Domain.v1.Services
         public APIMessage GetItensPedidoByPedido(int pedidoId)
         {
             IEnumerable<ItensGroupedResponse> _itens = _PedidoRepository.GetItemPedidosByPedidoId(pedidoId);
-            return new APIMessage(HttpStatusCode.OK, _itens);
+
+            TotalValueItemGroupedResponse totalValueGrouped = new TotalValueItemGroupedResponse
+            {
+                items = _itens,
+                valorTotalPedido = _PedidoRepository.GetAllItemsFromPedido(pedidoId).Sum(x => x.ValorUnitario)
+            };
+
+            return new APIMessage(HttpStatusCode.OK, totalValueGrouped);
         }
 
         public APIMessage InsertNewPedido(InsertPedidoRequest pedido)

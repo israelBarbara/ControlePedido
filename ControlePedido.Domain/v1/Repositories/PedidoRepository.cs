@@ -64,16 +64,20 @@ namespace ControlePedido.Domain.v1.Repositories
 
         public IEnumerable<ItensGroupedResponse> GetItemPedidosByPedidoId(int pedidoId)
         {
-
             return (from IP in _context.ItemPedido.Where(x => x.PedidoId == pedidoId)
                     group IP by IP.Nome into K
                     select new ItensGroupedResponse
                     {
                         Quantidade = K.Count(),
-                        ValorTotal = K.Sum(x => x.ValorUnitario),
                         Nome = K.Key
                     }).ToList();
+        }
 
+        public bool PedidoExists(int pedidoId)
+        {
+            Pedido? pedido = _context.Pedido.Find(pedidoId);
+            if (pedido == null) return false;
+            return true;
         }
 
     }

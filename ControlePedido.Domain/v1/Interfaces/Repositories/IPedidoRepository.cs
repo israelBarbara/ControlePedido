@@ -15,5 +15,6 @@ namespace ControlePedido.Domain.v1.Interfaces.Repositories
         public IEnumerable<ItensGroupedResponse> GetItemPedidosByPedidoId(int pedidoId);
         public IEnumerable<ItemPedido> GetAllItemsFromPedido(int PedidoId);
         public IEnumerable<PedidoResponse> GetAllOrders();
+        public bool PedidoExists(int pedidoId);
     }
 }

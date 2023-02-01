@@ -28,6 +28,9 @@ namespace ControlePedido.Domain.v1.Services
             if(pedido == null) return new APIMessage(HttpStatusCode.BadRequest, "Informe um pedido");
             if(pedido.Nome.Trim().Length == 0) new APIMessage(HttpStatusCode.BadRequest, pedido,"Informe um nome para o pedido");
 
+            bool exists = _PedidoRepository.PedidoExists(pedido.PedidoId);
+            if (!exists) return new APIMessage(HttpStatusCode.BadRequest, pedido, "O Pedido Nao existe");
+
             _ItemPedidoRepository.InsertItemPedido(pedido);
             return new APIMessage(HttpStatusCode.OK, pedido);
         }

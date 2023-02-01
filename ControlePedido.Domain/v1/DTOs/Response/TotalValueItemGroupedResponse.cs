@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ControlePedido.Domain.v1.DTOs.Response
 {
-    public class ItensGroupedResponse
+    public class TotalValueItemGroupedResponse
     {
-        public string Nome { get; set; }    
-        public int Quantidade { get; set; }
+        public decimal valorTotalPedido { get; set; }   
+        public IEnumerable<ItensGroupedResponse> items { get; set; }    
     }
 }
